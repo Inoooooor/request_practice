@@ -6,7 +6,7 @@
 main {
     height: 100vh;
     display: grid;
-    grid-template: repeat(12, 1fr) / 1fr 400px 1fr;
+    grid-template: 1% repeat(10, 1fr) 1% / 1fr 400px 1fr;
     width: 100vw;
 }
 
@@ -34,7 +34,41 @@ main {
 }
 
 .hack_info {
-    grid-area: 7 / 2 / 10 / -2;
+    grid-area: 7 / 2 / 9 / -2;
     /* background-color: green; */
-    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.bait_words {
+    grid-area: 9 / 2 / 10 / -2;
+}
+
+.form_div {
+    grid-area: 10 / 2 / 12 / -2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+form {
+    width: 80%;
+}
+
+input {
+    display: block;
+    width: 100%;
+}
+
+h3 {
+    display: inline-block;
+}
+
+.form_div.cover {
+    background-color: white;
+    z-index: 1;
 }

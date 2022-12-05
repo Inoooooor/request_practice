@@ -1,37 +1,37 @@
-
+const hackInfoDiv = document.getElementById('hacked_info');
 const hackButton = document.getElementById('hacking_button');
+const baitForm = document.getElementById('bait_form');
+const baitFormCover = document.getElementById('bait_form_cover');
 hackButton.addEventListener('click', () => {
-  console.log(randObj);
-});
-
-
-fetch('https://jsonplaceholder.typicode.com/users')
-.then(response => response.json())
-.then(json => {
-    let randObj = Math.floor(Math.random() * json.length);
-    console.log(randObj);
-    for (let key in json[0]) {
-      if (key == "address") {
-        for (let addressKey in json[0].address) {
-          if (addressKey != "geo") {
-            console.log(addressKey + " = " + json[0].address[addressKey]);
-            const pElement = document.createElement('p');
-            pElement.classList = "hack_text";
-            pElement.innerHTML = addressKey + " = " + json[0].address[addressKey];
-            hackInfoDiv.append(pElement);        
+  hackInfoDiv.innerHTML = "";   /*Clearing space between every clicking*/
+  baitWindow();   /* Bait window with 25% chance to appear */
+  fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(json => {
+      let randObjNum = Math.floor(Math.random() * json.length);     /*Added random to shuffle objects every clicking*/
+      for (let key in json[randObjNum]) {       /*Cycle for running across all the object's props*/
+        if (key == "address") {
+          for (let addressKey in json[randObjNum].address) {    /* Cycle for getting info of inner object */
+            if (addressKey != "geo") {
+              const pElement = document.createElement('p');     /*Adding catched info to the tree*/
+              pElement.classList = "hack_text";
+              pElement.innerHTML = addressKey + " = " + json[randObjNum].address[addressKey];
+              hackInfoDiv.append(pElement);        
+            }
           }
+          continue;
+        } else if (key == "company" || key == "id") {   /* Escaped putting this keys to tree */
+          continue;
         }
-        continue;
-      } else if (key == "company" || key == "id") {
-        continue;
-      }
-    console.log(key + " = " + json[0][key]);
-    const pElement = document.createElement('p');
-    pElement.classList = "hack_text";
-    pElement.innerHTML = key + " = " + json[0][key];
-    hackInfoDiv.append(pElement);
-  }
+      const pElement = document.createElement('p');     /*Adding catched info to the tree*/
+      pElement.classList = "hack_text";
+      pElement.innerHTML = key + " = " + json[randObjNum][key];
+      hackInfoDiv.append(pElement);
+    }
+  });
 });
+
+
 
 
 
@@ -43,8 +43,19 @@ hackerImg.classList = "hacker_img";
 hackerImg.src = 'src/hacker.png';
 imgDiv.append(hackerImg);
 
+function baitFormVanish() {
+  baitForm.innerHTML = "";
+}
 
-const hackInfoDiv = document.getElementById('hacked_info');
-// fetch('https://jsonplaceholder.typicode.com/users')
-// .then(response => response.json())
-// .then(json => console.log(json[0]));
+function baitWindow() {
+  let baitChance = Math.floor(Math.random() * 4);
+  const baitImgDiv = document.getElementById('bait_img_div');
+  const baitImg = document.createElement('img');
+  baitImg.classList = "bait_words";
+  baitImg.src = 'src/nudes_bait.png';
+  if (baitChance == 1) {
+    baitImgDiv.append(baitImg);
+  } else {
+    baitImgDiv.innerHTML = "";
+  }
+}
