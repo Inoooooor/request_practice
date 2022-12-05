@@ -35,6 +35,6 @@ main {
 
 .hack_info {
     grid-area: 7 / 2 / 10 / -2;
-    background-color: green;
+    /* background-color: green; */
     row-gap: 10px;
 }
