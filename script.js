@@ -31,10 +31,6 @@ hackButton.addEventListener('click', () => {
   });
 });
 
-
-
-
-
 // Put hacker picture 
 
 const imgDiv = document.getElementById('img_div');
@@ -43,19 +39,17 @@ hackerImg.classList = "hacker_img";
 hackerImg.src = 'src/hacker.png';
 imgDiv.append(hackerImg);
 
-function baitFormVanish() {
-  baitForm.innerHTML = "";
-}
-
 function baitWindow() {
-  let baitChance = Math.floor(Math.random() * 4);
   const baitImgDiv = document.getElementById('bait_img_div');
   const baitImg = document.createElement('img');
+  baitImgDiv.innerHTML = "";
+  let baitChance = Math.floor(Math.random() * 4);
   baitImg.classList = "bait_words";
   baitImg.src = 'src/nudes_bait.png';
   if (baitChance == 1) {
     baitImgDiv.append(baitImg);
+    baitFormCover.style.backgroundColor = "transparent";
   } else {
-    baitImgDiv.innerHTML = "";
+    baitFormCover.style.backgroundColor = "white";
   }
 }
