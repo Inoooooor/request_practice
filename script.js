@@ -39,6 +39,8 @@ hackerImg.classList = "hacker_img";
 hackerImg.src = 'src/hacker.png';
 imgDiv.append(hackerImg);
 
+// Below function that makes selling pic and form appear by certain chance
+
 function baitWindow() {
   const baitImgDiv = document.getElementById('bait_img_div');
   const baitImg = document.createElement('img');
