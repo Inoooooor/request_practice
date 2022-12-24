@@ -32,7 +32,6 @@ hackButton.addEventListener('click', () => {
 });
 
 // Put hacker picture 
-
 const imgDiv = document.getElementById('img_div');
 const hackerImg = document.createElement('img');
 hackerImg.classList = "hacker_img";
@@ -55,3 +54,7 @@ function baitWindow() {
     baitFormCover.style.backgroundColor = "white";
   }
 }
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(json => console.log(json))
